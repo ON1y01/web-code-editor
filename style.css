@@ -1,0 +1,59 @@
+.container{
+    width: 1600px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.menu{
+    display: flex;
+    flex: 0 0 25%;
+    min-width: 25%;
+    flex-direction: column;
+    padding: 15px;
+    background: #ffffff;
+    height: 600px;
+
+}
+.content{
+    display: flex;
+    flex: 0 0 75%;
+    max-width: 75%;
+    margin-left: 25px;
+    position: relative;
+
+}
+.wrapper{
+    display: flex;
+}
+.menu-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+}
+.menu-title{
+    padding-left: 10px;
+}
+.menu-folder{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.card{
+    border: none;
+}
+.section{
+    background: #000000;
+}
+.ck-editor__editable_inline {
+    height: 560px;
+}
+.content-text{
+    width: 100%;
+}
+.input-btn{
+    position: absolute;
+    padding: 10px 30px;
+    background-color: #000000;
+    color: #ffffff;
+    bottom: 15px;
+    right: 0;
+}
