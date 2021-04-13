@@ -51,9 +51,13 @@
 }
 .input-btn{
     position: absolute;
-    padding: 10px 30px;
+    padding: 6px 20px;
     background-color: #000000;
     color: #ffffff;
-    bottom: 15px;
+    /* top: 0; */
     right: 0;
+    display: none;
+}
+.active{
+    display: none;
 }

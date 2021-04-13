@@ -19,7 +19,8 @@
             <div class="menu">
                 <!-- <a href="#!" id="openCont">Открыть папку</a> -->
                 <p class="menu-folder" id="openCont">
-                    <span id="test"><i class="fa fa-folder" aria-hidden="true"></i></span>
+                    <span id="folder" class="folder"><i class="fa fa-folder" aria-hidden="true"></i></span>
+                    <span id="folderOpen"class="folderopen active"><i class="fa fa-folder-open" aria-hidden="true"></i></span>
                     <a class="btn" type="button" data-toggle="collapse" data-target="#multiCollapseExample2"
                         aria-expanded="false" aria-controls="multiCollapseExample2">My projects</a>
                 </p>
@@ -47,7 +48,6 @@
 <script>
     console.log('start');
 
-var reader = new FileReader();
 
 var fileList = {
     0: {
@@ -142,35 +142,37 @@ var fileList = {
 for (i in fileList) {
     document.getElementById('menuCont').innerHTML += `<div id="menuFile" class="menu-wrapper" index="` + i + `"><span><i class="fa fa-file" aria-hidden="true"></i></span><p class="menu-title">` + fileList[i].title + `</p>` + `</div>`;
 }
+var openCont = document.getElementById('openCont');
+openCont.onclick = function(){ 
+        // for(x=0; x<steps.length; x++){
+            // steps[x].classList.remove('rs-steps_active');
+        // }
+        // this.classList.add('rs-steps_active');
+        var folder = document.getElementById('folder');
+        var folderOpen = document.getElementById('folderOpen');
+        folder.classList.toggle('active');
+        folderOpen.classList.toggle('active');
+    }
 
 ClassicEditor
     .create(document.querySelector('#editor'),{
-        codeBlock: {
-            languages: [
-                // Do not render the CSS class for the plain text code blocks.
-                { language: 'plaintext', label: 'Plain text', class: '' },
-
-                // Use the "php-code" class for PHP code blocks.
-                { language: 'php', label: 'PHP', class: 'php-code' },
-
-                // Use the "js" class for JavaScript code blocks.
-                // Note that only the first ("js") class will determine the language of the block when loading data.
-                { language: 'javascript', label: 'JavaScript', class: 'js javascript js-code' },
-
-                // Python code blocks will have the default "language-python" CSS class.
-                { language: 'python', label: 'Python' }
-            ]
-        }
+        
     })
     .then( editor => { window.editor = editor;
         var test = document.getElementsByClassName('menu-wrapper');
         var fileX;
         var fileName;
-        for (k = 0; k < test.length; k++) {
+        for (var k = 0; k < test.length; k++) {
             // console.log(k);
             test[k].addEventListener('click', function () {        
                 var fileIndex = this.getAttribute('index');
                 fileX = fileList[fileIndex].data;
+                for (var i = 0; i < fileX.length; i++){
+                    if (fileX[i] == '\n'){
+                        console.log(fileX[0]);
+                    }
+                }
+                document.getElementById('inputBtn').style.display = "block";
                 editor.setData(`<pre id= "textBlock">` + fileX + `</pre>`);
                 var fileData = editor.getData();
                 var inputBtn = document.getElementById('inputBtn');
